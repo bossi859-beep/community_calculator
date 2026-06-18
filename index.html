@@ -499,6 +499,49 @@
       opacity: 1;
     }
 
+
+    .effective-box {
+      border-color: rgba(255, 209, 102, 0.26);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(255, 209, 102, 0.12), transparent 32%),
+        rgba(255, 255, 255, 0.08);
+    }
+
+    .effective-table {
+      margin-top: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .effective-row {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 1fr 1fr;
+      gap: 10px;
+      align-items: center;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .effective-row:last-child {
+      border-bottom: 0;
+    }
+
+    .effective-head {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: rgba(0, 0, 0, 0.16);
+    }
+
+    .effective-row strong {
+      color: var(--text);
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
     @media (max-width: 820px) {
       body { padding: 14px; align-items: flex-start; }
       .shell { min-height: auto; }
@@ -526,6 +569,20 @@
       .money-list strong {
         text-align: left;
       }
+
+      .effective-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+
+      .effective-head {
+        display: none;
+      }
+
+      .effective-row {
+        background: rgba(255,255,255,0.04);
+      }
+
       .language-switch {
         flex-shrink: 0;
       }
@@ -562,41 +619,33 @@
       <!-- START -->
       <div class="step active" data-step="0">
         <span class="eyebrow" data-i18n="eyebrow">Partner-only calculator</span>
-        <h1 data-i18n="heroTitle">Stop Chasing New Volume From Zero Every Month</h1>
+        <h1 data-i18n="heroTitle">Build More From the Volume You Already Generate</h1>
         <p class="lead" data-i18n="heroLead">
           Enter the monthly volume you can currently generate and see how the same active group
-          could create repeated Arena session volume over 6 months.
+          could rotate through Arena sessions and create repeated session volume over 6 months.
         </p>
 
         <div class="split">
           <div>
             <div class="comparison">
               <div class="comparison-card">
-                <div class="label" data-i18n="current modelLogicTitle">Current model</div>
-                <p class="muted" data-i18n="current modelLogicText">
-                  If you send $150,000 volume into the current one-time model, you receive a percentage commission and the deal is usually finished.
+                <div class="label" data-i18n="currentLogicTitle">Your current way of working</div>
+                <p class="muted" data-i18n="currentLogicText">
+                  In your current way of working, volume is usually counted once. Commission is paid once. Then the next volume must be created again.
                 </p>
               </div>
               <div class="comparison-card highlight">
-                <div class="label" data-i18n="arenaLogicTitle">Arena model</div>
+                <div class="label" data-i18n="arenaLogicTitle">Arena as an additional layer</div>
                 <p class="muted" data-i18n="arenaLogicText">
-                  In Arena, the same $150,000 active group can keep rotating through repeated sessions. The same money can create repeated session volume.
+                  Keep your current work. Add Arena as a community layer: the same active volume can rotate through sessions and create repeated session volume over time.
                 </p>
               </div>
             </div>
 
             <div class="actions">
               <button onclick="goToStep(1)" data-i18n="startCalculation">Start Calculation</button>
-              <button class="secondary" onclick="goToStep(3)" data-i18n="showExample">Show Example</button>
             </div>
           </div>
-
-          <div class="story-box">
-            <h3 data-i18n="defaultExample">Default example</h3>
-            <div class="story-row"><span data-i18n="monthlyVolume">Monthly volume</span><span>$50,000</span></div>
-            <div class="story-row"><span data-i18n="buildPeriod">Build-up period</span><span data-i18n="threeMonths">3 months</span></div>
-            <div class="story-row"><span data-i18n="activeGroup">Active Arena group</span><span>$150,000</span></div>
-            <div class="story-row"><span data-i18n="partnerAllocation">Partner allocation</span><span>8%</span></div>
           </div>
         </div>
       </div>
@@ -638,7 +687,15 @@
         </div>
 
         <div class="note" data-i18n="mainPointNote">
-          Main point: this is not a one-time one-time commission logic. The same active group can continue rotating through repeated Arena sessions.
+          Main point: this is not a one-time commission model. The same active group can continue rotating through repeated Arena sessions.
+        </div>
+
+        <div class="note" data-i18n="sixMonthClarification">
+          This is a simple 6-month example. You can still keep adding new volume every month while your existing group continues working through sessions.
+        </div>
+
+        <div class="note" data-i18n="sessionDefinition">
+          A session is a private Arena event created by the partner, with a defined entry and selected traders.
         </div>
 
         <div class="actions">
@@ -650,9 +707,9 @@
       <!-- STEP 3 -->
       <div class="step" data-step="3">
         <span class="eyebrow" data-i18n="arenaLogicEyebrow">Arena logic</span>
-        <h2 data-i18n="repeatTitle">The same money can create repeated session volume.</h2>
+        <h2 data-i18n="repeatTitle">The same volume can work more than once.</h2>
         <p class="lead" data-i18n="repeatLead">
-          The partner creates sessions. In each session, the partner sets the entry. Session volume is created by the group inside those sessions.
+          The partner creates sessions. In each session, the partner sets the entry. When the same active group returns, the original volume can generate repeated session volume.
         </p>
 
         <div class="mini-grid">
@@ -737,10 +794,42 @@
           Daily session volume can be created through one larger session or several smaller sessions. The point is not the number of sessions. The point is the total session volume created by the active group.
         </div>
 
+        <div class="story-box effective-box">
+          <h3 data-i18n="effectiveTitle">The simple final view</h3>
+          <p class="muted" data-i18n="effectiveLead">
+            In the one-time model, 8% is paid once. In Arena, the same active group can rotate through sessions, so the partner potential can become a higher percentage of the active group over 6 months.
+          </p>
+
+          <div class="effective-table">
+            <div class="effective-row effective-head">
+              <span data-i18n="effectiveModel">Model</span>
+              <span data-i18n="effectiveActiveGroup">Active group</span>
+              <span data-i18n="effectivePotential">Partner potential</span>
+              <span data-i18n="effectivePercent">Effective percentage</span>
+            </div>
+            <div class="effective-row">
+              <span data-i18n="goodPartner">Good Partner</span>
+              <strong id="effGoodGroup">$150,000</strong>
+              <strong id="effGoodPotential">$36,000</strong>
+              <strong id="effGoodPercent">24%</strong>
+            </div>
+            <div class="effective-row">
+              <span data-i18n="superPartner">Super Partner</span>
+              <strong id="effSuperGroup">$150,000</strong>
+              <strong id="effSuperPotential">$60,000</strong>
+              <strong id="effSuperPercent">40%</strong>
+            </div>
+          </div>
+
+          <div class="note" data-i18n="effectiveNote">
+            This is the key point: not only a one-time 8%. With repeated sessions, the same active group can create 24% or 40% partner potential over 6 months, depending on activation.
+          </div>
+        </div>
+
         <div class="comparison">
           <div class="comparison-card">
-            <div class="label" data-i18n="current modelEndTitle">One-time ending</div>
-            <p class="muted" data-i18n="current modelEndText">Send $150,000 volume, receive a percentage commission once, and the deal is finished.</p>
+            <div class="label" data-i18n="oneTimeEndTitle">One-time ending</div>
+            <p class="muted" data-i18n="oneTimeEndText">Place $150,000 volume, receive a percentage commission once, and the deal is finished.</p>
           </div>
           <div class="comparison-card highlight">
             <div class="label" data-i18n="arenaContinuesTitle">Arena continues</div>
@@ -749,9 +838,7 @@
         </div>
 
         <div class="actions">
-          <button onclick="copySummary()" data-i18n="copyResult">Copy Result</button>
           <button class="secondary" onclick="restart()" data-i18n="backToStart">Back to Start</button>
-          <a class="btn secondary" href="mailto:?subject=Arena Partner Application&body=I want to apply as an Arena Partner." data-i18n="applyPartner">Apply as Arena Partner</a>
         </div>
 
         <p class="disclaimer" data-i18n="disclaimer">
@@ -762,22 +849,17 @@
       </div>
     </section>
   </main>
-
-  <div id="toast" class="toast">Result copied</div>
-
-  <script>
+<script>
     const translations = {
       en: {
         eyebrow: "Partner-only calculator",
-        heroTitle: "Stop Chasing New Volume From Zero Every Month",
-        heroLead: "Enter the monthly volume you can currently generate and see how the same active group could create repeated Arena session volume over 6 months.",
-        current modelLogicTitle: "Current model",
-        current modelLogicText: "If you send $150,000 volume into the current one-time model, you receive a percentage commission and the deal is usually finished.",
-        arenaLogicTitle: "Arena model",
-        arenaLogicText: "In Arena, the same $150,000 active group can keep rotating through repeated sessions. The same money can create repeated session volume.",
+        heroTitle: "Build More From the Volume You Already Generate",
+        heroLead: "Enter the monthly volume you can currently generate and see how the same active group could rotate through Arena sessions and create repeated session volume over 6 months.",
+        currentLogicTitle: "Your current way of working",
+        currentLogicText: "In your current way of working, volume is usually counted once. Commission is paid once. Then the next volume must be created again.",
+        arenaLogicTitle: "Arena jako další vrstva",
+        arenaLogicText: "Keep your current work. Add Arena as a community layer: the same active volume can rotate through sessions and create repeated session volume over time.",
         startCalculation: "Start Calculation",
-        showExample: "Show Example",
-        defaultExample: "Default example",
         monthlyVolume: "Monthly volume",
         buildPeriod: "Build-up period",
         threeMonths: "3 months",
@@ -796,39 +878,46 @@
         monthTwo: "Month 2",
         monthThree: "Month 3",
         totalActiveGroup: "Total active Arena group",
-        mainPointNote: "Main point: this is not a one-time one-time commission logic. The same active group can continue rotating through repeated Arena sessions.",
+        mainPointNote: "Main point: the same active volume does not have to be only one commission event. In Arena, the same active group can rotate through sessions and may create 3× or 5× session volume over 6 months.",
+        sixMonthClarification: "This is a simple 6-month example. You can still keep adding new volume every month while your existing group continues working through sessions.",
+        sessionDefinition: "A session is a private Arena event created by the partner, with a defined entry and selected traders.",
         showArenaLogic: "Show Arena Logic",
         arenaLogicEyebrow: "Arena logic",
-        repeatTitle: "The same money can create repeated session volume.",
-        repeatLead: "The partner creates sessions. In each session, the partner sets the entry. Session volume is created by the group inside those sessions.",
+        repeatTitle: "The same volume can work more than once.",
+        repeatLead: "The partner creates sessions. In each session, the partner sets the entry. When the same active group returns, the original volume can generate repeated session volume.",
         activeArenaGroupSmall: "active Arena group",
         sixMonths: "6 months",
         workingPeriod: "potential working period",
         partnerAllocationModel: "partner allocation model",
-        oneTimeLogic: "One-time logic",
-        oneTimeText: "$150,000 volume is sent once. Commission is paid once. Then the pressure starts again.",
-        rotationLogic: "Arena rotation logic",
-        rotationText: "$150,000 active group can keep moving through sessions and create higher session volume over time.",
+        oneTimeLogic: "What you do today",
+        oneTimeText: "This is the model you already know: volume is placed once, commission is paid once, and then the next volume must be created again.",
+        rotationLogic: "Arena rotation",
+        rotationText: "The active group can keep moving through sessions and create higher session volume over time.",
         calculatePotential: "Calculate My Potential",
         resultEyebrow: "Result",
         resultTitle: "Your 6-Month Arena Potential",
         resultLead: "Based on your monthly volume and the 3-month build-up model.",
-        goodPartner: "Good Partner",
+        goodPartner: "Dobrý partner",
         goodDesc: "Turns the active group into around 3× Arena session volume over 6 months.",
         potentialDesc: "Estimated partner potential at 8% allocation.",
         sixMonthSessionVolume: "6-month session volume",
         averageMonthlyPotential: "Average monthly potential",
         dailySessionVolumeNeeded: "Approx. daily session volume needed",
-        superPartner: "Super Partner",
+        superPartner: "Výborný partner",
         superDesc: "Turns the active group into around 5× Arena session volume over 6 months.",
         dailyNote: "Daily session volume can be created through one larger session or several smaller sessions. The point is not the number of sessions. The point is the total session volume created by the active group.",
-        current modelEndTitle: "One-time ending",
-        current modelEndText: "Send $150,000 volume, receive a percentage commission once, and the deal is finished.",
-        arenaContinuesTitle: "Arena continues",
-        arenaContinuesText: "The same $150,000 active group can keep rotating through sessions and create repeated session volume.",
-        copyResult: "Copy Result",
+        oneTimeEndTitle: "Your current model",
+        oneTimeEndText: "In your current model, volume is used once, commission is received once, and then a new volume must be created again.",
+        arenaContinuesTitle: "Arena adds rotation",
+        arenaContinuesText: "The same active group can keep rotating through sessions and create repeated session volume. This is how the same volume can become more than a one-time calculation.",
         backToStart: "Back to Start",
-        applyPartner: "Apply as Arena Partner",
+        effectiveTitle: "The simple final view",
+        effectiveLead: "In the one-time model, 8% is paid once. In Arena, the same active group can rotate through sessions, so the partner potential can become a higher percentage of the active group over 6 months.",
+        effectiveModel: "Model",
+        effectiveActiveGroup: "Active group",
+        effectivePotential: "Partner potential",
+        effectivePercent: "Effective percentage",
+        effectiveNote: "This is the key point: not only a one-time 8%. With repeated sessions, the same active group can create 24% or 40% partner potential over 6 months, depending on activation.",
         disclaimer: "This calculator provides an indicative business estimation only. It does not represent guaranteed income, investment return, trading performance, financial advice or any regulated financial service. Actual results depend on partner execution, user activity, community quality and operational performance.",
         start: "Start",
         stepLabel: "Step",
@@ -837,20 +926,18 @@
       },
       cs: {
         eyebrow: "Kalkulačka pouze pro partnery",
-        heroTitle: "Přestaňte každý měsíc nahánět nový objem od nuly",
-        heroLead: "Zadejte měsíční objem, který dnes dokážete vytvořit, a podívejte se, jak může stejná aktivní skupina vytvářet opakovaný session volume v Aréně během 6 měsíců.",
-        current modelLogicTitle: "Current model",
-        current modelLogicText: "Když pošlete objem $150,000 do současného jednorázového modelu, dostanete procentuální provizi a tím je obchod většinou ukončen.",
-        arenaLogicTitle: "Arena model",
-        arenaLogicText: "V Aréně se stejná aktivní skupina $150,000 může opakovaně otáčet přes sessions. Ty stejné peníze mohou vytvářet opakovaný session volume.",
+        heroTitle: "Vytěžte víc z objemu, který už dnes dokážete vytvořit",
+        heroLead: "Zadejte měsíční objem, který dnes dokážete vytvořit, a podívejte se, jak se stejná aktivní skupina může opakovaně zapojovat do arénových seancí a vytvářet nový objem během 6 měsíců.",
+        currentLogicTitle: "Váš současný způsob práce",
+        currentLogicText: "Ve vašem současném způsobu práce se objem většinou započítá jednou. Provize se vyplatí jednou. Potom je potřeba vytvořit další objem znovu.",
+        arenaLogicTitle: "Arena jako další vrstva",
+        arenaLogicText: "Svůj současný byznys si můžete ponechat. Aréna je další komunitní vrstva: stejný aktivní objem se může opakovaně zapojovat do seancí a časem vytvářet další objem.",
         startCalculation: "Spustit kalkulaci",
-        showExample: "Ukázat příklad",
-        defaultExample: "Výchozí příklad",
         monthlyVolume: "Měsíční objem",
         buildPeriod: "Budovací období",
         threeMonths: "3 měsíce",
-        activeGroup: "Aktivní Arena skupina",
-        partnerAllocation: "Partnerská alokace",
+        activeGroup: "Aktivní skupina v Aréně",
+        partnerAllocation: "Podíl partnera",
         stepOne: "Krok 1",
         volumeQuestion: "Jaký objem dnes dokážete vytvořit za měsíc?",
         volumeLead: "Vyberte nejbližší číslo. Držte to jednoduše.",
@@ -858,46 +945,53 @@
         next: "Dále",
         stepTwo: "Krok 2",
         buildTitle: "Nejdřív vybudujete skupinu. Potom skupina dál pracuje.",
-        buildLead: "Používáme jednoduchý 3měsíční model budování skupiny. Během prvních 3 měsíců skupinu vytváříte. Arena sessions mohou běžet už od začátku.",
+        buildLead: "Používáme jednoduchý 3měsíční model budování skupiny. Během prvních 3 měsíců skupinu vytváříte. Arénové seance mohou běžet už od začátku.",
         activeGroupTitle: "Vaše aktivní skupina za 3 měsíce",
         monthOne: "Měsíc 1",
         monthTwo: "Měsíc 2",
         monthThree: "Měsíc 3",
-        totalActiveGroup: "Celková aktivní Arena skupina",
-        mainPointNote: "Hlavní pointa: toto není jednorázová jednorázová provize. Stejná aktivní skupina se může dál opakovaně otáčet přes Arena sessions.",
-        showArenaLogic: "Ukázat Arena logiku",
-        arenaLogicEyebrow: "Arena logika",
-        repeatTitle: "Ty stejné peníze mohou vytvářet opakovaný session volume.",
-        repeatLead: "Partner vytváří sessions. V každé session partner nastaví entry. Session volume vzniká aktivitou skupiny uvnitř těchto sessions.",
-        activeArenaGroupSmall: "aktivní Arena skupina",
+        totalActiveGroup: "Celková aktivní skupina v Aréně",
+        mainPointNote: "Hlavní pointa: stejný aktivní objem nemusí být jen jedna provizní událost. V Aréně se stejná aktivní skupina může opakovaně zapojovat do seancí a za 6 měsíců vytvořit 3× nebo 5× vyšší objem.",
+        sixMonthClarification: "Toto je jednoduchý 6měsíční příklad. V praxi můžete každý měsíc přidávat nový objem, zatímco vaše existující skupina dál pracuje přes seance.",
+        sessionDefinition: "Seance je soukromá událost v Aréně vytvořená partnerem, s předem určeným vstupem a vybranými tradery.",
+        showArenaLogic: "Ukázat logiku Arény",
+        arenaLogicEyebrow: "Logika Arény",
+        repeatTitle: "Stejný objem může pracovat víckrát než jednou.",
+        repeatLead: "Partner vytváří seance. V každé seanci nastaví vstup. Když se stejná aktivní skupina vrací, původní objem může vytvářet další objem z opakované aktivity.",
+        activeArenaGroupSmall: "aktivní skupina v Aréně",
         sixMonths: "6 měsíců",
-        workingPeriod: "potenciální pracovní období",
-        partnerAllocationModel: "model partnerské alokace",
-        oneTimeLogic: "Jednorázová logika",
-        oneTimeText: "Objem $150,000 se pošle jednou. Provize se vyplatí jednou. Potom tlak začíná znovu.",
-        rotationLogic: "Arena rotační logika",
-        rotationText: "Aktivní skupina $150,000 se může dál pohybovat přes sessions a časem vytvářet vyšší session volume.",
-        calculatePotential: "Vypočítat potenciál",
+        workingPeriod: "období potenciálu",
+        partnerAllocationModel: "model podílu partnera",
+        oneTimeLogic: "To, co děláte dnes",
+        oneTimeText: "Toto je model, který už znáte: objem se použije jednou, provize se vyplatí jednou a potom je potřeba vytvořit další objem znovu.",
+        rotationLogic: "Rotace v Aréně",
+        rotationText: "Aktivní skupina se může dál zapojovat do seancí a časem vytvářet vyšší objem.",
+        calculatePotential: "Vypočítat můj potenciál",
         resultEyebrow: "Výsledek",
-        resultTitle: "Váš 6měsíční Arena potenciál",
+        resultTitle: "Váš 6měsíční potenciál v Aréně",
         resultLead: "Na základě vašeho měsíčního objemu a 3měsíčního modelu budování skupiny.",
-        goodPartner: "Good Partner",
-        goodDesc: "Dokáže z aktivní skupiny vytvořit přibližně 3× Arena session volume během 6 měsíců.",
-        potentialDesc: "Odhadovaný partnerský potenciál při 8% alokaci.",
-        sixMonthSessionVolume: "6měsíční session volume",
+        goodPartner: "Dobrý partner",
+        goodDesc: "Dokáže z aktivní skupiny vytvořit přibližně 3× vyšší objem v Aréně během 6 měsíců.",
+        potentialDesc: "Odhadovaný potenciál partnera při 8% podílu.",
+        sixMonthSessionVolume: "Objem seancí za 6 měsíců",
         averageMonthlyPotential: "Průměrný měsíční potenciál",
-        dailySessionVolumeNeeded: "Přibližný denní session volume",
-        superPartner: "Super Partner",
-        superDesc: "Dokáže z aktivní skupiny vytvořit přibližně 5× Arena session volume během 6 měsíců.",
-        dailyNote: "Denní session volume může vzniknout přes jednu větší session nebo několik menších sessions. Nejde o počet sessions. Jde o celkový session volume vytvořený aktivní skupinou.",
-        current modelEndTitle: "Current model-style konec",
-        current modelEndText: "Pošlete objem $150,000, dostanete procentuální provizi jednou a obchod je ukončen.",
-        arenaContinuesTitle: "Arena pokračuje",
-        arenaContinuesText: "Stejná aktivní skupina $150,000 se může dál otáčet přes sessions a vytvářet opakovaný session volume.",
-        copyResult: "Zkopírovat výsledek",
+        dailySessionVolumeNeeded: "Přibližný denní objem seancí",
+        superPartner: "Výborný partner",
+        superDesc: "Dokáže z aktivní skupiny vytvořit přibližně 5× vyšší objem v Aréně během 6 měsíců.",
+        dailyNote: "Denní objem seancí může vzniknout přes jednu větší seanci nebo několik menších seancí. Nejde o počet seancí. Jde o celkový objem vytvořený aktivní skupinou.",
+        oneTimeEndTitle: "Váš současný model",
+        oneTimeEndText: "Ve vašem současném modelu se objem použije jednou, provize se vyplatí jednou a potom je potřeba vytvořit další objem znovu.",
+        arenaContinuesTitle: "Aréna přidává rotaci",
+        arenaContinuesText: "Stejná aktivní skupina se může dál zapojovat do seancí a vytvářet opakovaný objem. Tak se stejný objem může stát víc než jen jednorázovou kalkulací.",
         backToStart: "Zpět na začátek",
-        applyPartner: "Požádat o Arena Partnerství",
-        disclaimer: "Tato kalkulačka poskytuje pouze orientační obchodní odhad. Nepředstavuje garantovaný příjem, investiční výnos, trading výkonnost, finanční poradenství ani regulovanou finanční službu. Skutečné výsledky závisí na práci partnera, aktivitě uživatelů, kvalitě komunity a provozním výkonu.",
+        effectiveTitle: "Jednoduchý závěrečný pohled",
+        effectiveLead: "V modelu, který znáte dnes, se 8 % vyplatí jednou. V Aréně se stejná aktivní skupina může opakovaně zapojovat do seancí, takže potenciál partnera může za 6 měsíců představovat vyšší procento z aktivní skupiny.",
+        effectiveModel: "Model",
+        effectiveActiveGroup: "Aktivní skupina",
+        effectivePotential: "Potenciál partnera",
+        effectivePercent: "Efektivní procento",
+        effectiveNote: "Toto je hlavní pointa: nejde jen o jednorázových 8 %. Díky opakovaným seancím může stejná aktivní skupina vytvořit za 6 měsíců potenciál partnera 24 % nebo 40 %, podle schopnosti aktivace.",
+        disclaimer: "Tato kalkulačka poskytuje pouze orientační obchodní odhad. Nepředstavuje garantovaný příjem, investiční výnos, obchodní výkonnost, finanční poradenství ani regulovanou finanční službu. Skutečné výsledky závisí na práci partnera, aktivitě uživatelů, kvalitě komunity a provozním výkonu.",
         start: "Start",
         stepLabel: "Krok",
         resultCopied: "Výsledek zkopírován",
@@ -905,15 +999,13 @@
       },
       de: {
         eyebrow: "Partner-Rechner",
-        heroTitle: "Hören Sie auf, jeden Monat neues Volumen von Null zu jagen",
-        heroLead: "Geben Sie das monatliche Volumen ein, das Sie aktuell generieren können, und sehen Sie, wie dieselbe aktive Gruppe über 6 Monate wiederholtes Arena Session Volume erzeugen könnte.",
-        current modelLogicTitle: "Aktuelles Modell",
-        current modelLogicText: "Wenn Sie $150,000 Volumen an einen Current model senden, erhalten Sie eine prozentuale Provision und der Vorgang ist normalerweise abgeschlossen.",
-        arenaLogicTitle: "Arena-Modell",
-        arenaLogicText: "In der Arena kann dieselbe aktive $150,000-Gruppe wiederholt durch Sessions rotieren. Dasselbe Geld kann wiederholtes Session Volume erzeugen.",
+        heroTitle: "Machen Sie mehr aus dem Volumen, das Sie bereits generieren können",
+        heroLead: "Geben Sie das monatliche Volumen ein, das Sie aktuell generieren können, und sehen Sie, wie dieselbe aktive Gruppe über Arena Sessions rotieren und über 6 Monate wiederholtes Session Volume erzeugen könnte.",
+        currentLogicTitle: "Ihre aktuelle Arbeitsweise",
+        currentLogicText: "In Ihrer aktuellen Arbeitsweise wird Volumen normalerweise einmal gezählt. Provision wird einmal bezahlt. Danach muss das nächste Volumen wieder neu erzeugt werden.",
+        arenaLogicTitle: "Arena als zusätzliche Ebene",
+        arenaLogicText: "Behalten Sie Ihre aktuelle Arbeit. Arena ist eine zusätzliche Community-Ebene: dasselbe aktive Volumen kann durch Sessions rotieren und über Zeit wiederholtes Session Volume erzeugen.",
         startCalculation: "Berechnung starten",
-        showExample: "Beispiel anzeigen",
-        defaultExample: "Standardbeispiel",
         monthlyVolume: "Monatliches Volumen",
         buildPeriod: "Aufbauphase",
         threeMonths: "3 Monate",
@@ -932,39 +1024,46 @@
         monthTwo: "Monat 2",
         monthThree: "Monat 3",
         totalActiveGroup: "Gesamte aktive Arena-Gruppe",
-        mainPointNote: "Kernpunkt: Das ist keine einmalige Provisionslogik. Dieselbe aktive Gruppe kann weiterhin wiederholt durch Arena Sessions rotieren.",
+        mainPointNote: "Kernpunkt: Kernpunkt: Das ist kein einmaliges Provisionsmodell. Dieselbe aktive Gruppe kann weiterhin wiederholt durch Arena Sessions rotieren.",
+        sixMonthClarification: "Das ist ein einfaches 6-Monats-Beispiel. In der Praxis können Sie jeden Monat neues Volumen hinzufügen, während Ihre bestehende Gruppe weiter durch Sessions arbeitet.",
+        sessionDefinition: "Eine Session ist ein privates Arena-Event, das vom Partner erstellt wird, mit festgelegtem Entry und ausgewählten Tradern.",
         showArenaLogic: "Arena-Logik anzeigen",
         arenaLogicEyebrow: "Arena-Logik",
-        repeatTitle: "Dasselbe Geld kann wiederholtes Session Volume erzeugen.",
-        repeatLead: "Der Partner erstellt Sessions. In jeder Session legt der Partner den Entry fest. Session Volume entsteht durch die Gruppe innerhalb dieser Sessions.",
+        repeatTitle: "Dasselbe Volumen kann mehr als einmal arbeiten.",
+        repeatLead: "Der Partner erstellt Sessions. In jeder Session legt der Partner den Entry fest. Wenn dieselbe aktive Gruppe zurückkehrt, kann das ursprüngliche Volumen wiederholtes Session Volume erzeugen.",
         activeArenaGroupSmall: "aktive Arena-Gruppe",
         sixMonths: "6 Monate",
         workingPeriod: "potenzieller Arbeitszeitraum",
         partnerAllocationModel: "Partner-Allokationsmodell",
-        oneTimeLogic: "Einmal-Logik",
-        oneTimeText: "$150,000 Volumen wird einmal gesendet. Provision wird einmal bezahlt. Dann beginnt der Druck erneut.",
-        rotationLogic: "Arena-Rotationslogik",
-        rotationText: "Eine aktive $150,000-Gruppe kann weiter durch Sessions laufen und über Zeit höheres Session Volume erzeugen.",
+        oneTimeLogic: "Was Sie heute tun",
+        oneTimeText: "Das ist das Modell, das Sie bereits kennen: Volumen wird einmal eingebracht, Provision wird einmal bezahlt und danach muss das nächste Volumen wieder neu erzeugt werden.",
+        rotationLogic: "Arena-Rotation",
+        rotationText: "Die aktive Gruppe kann weiter durch Sessions laufen und über Zeit höheres Session Volume erzeugen.",
         calculatePotential: "Mein Potenzial berechnen",
         resultEyebrow: "Ergebnis",
         resultTitle: "Ihr 6-Monats-Arena-Potenzial",
         resultLead: "Basierend auf Ihrem monatlichen Volumen und dem 3-Monats-Aufbaumodell.",
-        goodPartner: "Good Partner",
+        goodPartner: "Dobrý partner",
         goodDesc: "Macht aus der aktiven Gruppe ungefähr 3× Arena Session Volume über 6 Monate.",
         potentialDesc: "Geschätztes Partnerpotenzial bei 8% Allokation.",
         sixMonthSessionVolume: "6-Monats-Session-Volumen",
         averageMonthlyPotential: "Durchschnittliches monatliches Potenzial",
         dailySessionVolumeNeeded: "Ungefähr benötigtes tägliches Session Volume",
-        superPartner: "Super Partner",
+        superPartner: "Výborný partner",
         superDesc: "Macht aus der aktiven Gruppe ungefähr 5× Arena Session Volume über 6 Monate.",
         dailyNote: "Tägliches Session Volume kann durch eine größere Session oder mehrere kleinere Sessions entstehen. Entscheidend ist nicht die Anzahl der Sessions, sondern das gesamte Session Volume der aktiven Gruppe.",
-        current modelEndTitle: "Einmaliges Ende",
-        current modelEndText: "Sie bringen $150,000 Volumen ein, erhalten einmal eine prozentuale Provision und der Vorgang ist abgeschlossen.",
-        arenaContinuesTitle: "Arena läuft weiter",
-        arenaContinuesText: "Dieselbe aktive $150,000-Gruppe kann weiter durch Sessions rotieren und wiederholtes Session Volume erzeugen.",
-        copyResult: "Ergebnis kopieren",
+        oneTimeEndTitle: "Ihr aktuelles Modell",
+        oneTimeEndText: "In Ihrem aktuellen Modell wird Volumen einmal genutzt, Provision wird einmal bezahlt und danach muss neues Volumen wieder neu erzeugt werden.",
+        arenaContinuesTitle: "Arena fügt Rotation hinzu",
+        arenaContinuesText: "Dieselbe aktive Gruppe kann weiter durch Sessions rotieren und wiederholtes Session Volume erzeugen. So kann dasselbe Volumen mehr als nur eine einmalige Berechnung werden.",
         backToStart: "Zurück zum Start",
-        applyPartner: "Als Arena Partner bewerben",
+        effectiveTitle: "Die einfache Schlussansicht",
+        effectiveLead: "Im Modell, das Sie heute kennen, werden 8 % einmal bezahlt. In der Arena kann dieselbe aktive Gruppe durch Sessions rotieren, sodass das Partnerpotenzial über 6 Monate zu einem höheren Prozentsatz der aktiven Gruppe werden kann.",
+        effectiveModel: "Modell",
+        effectiveActiveGroup: "Aktive Gruppe",
+        effectivePotential: "Partnerpotenzial",
+        effectivePercent: "Effektiver Prozentsatz",
+        effectiveNote: "Das ist der Kernpunkt: nicht nur einmalige 8 %. Durch wiederholte Sessions kann dieselbe aktive Gruppe über 6 Monate ein Partnerpotenzial von 24 % oder 40 % erzeugen, abhängig von der Aktivierung.",
         disclaimer: "Dieser Rechner liefert nur eine indikative geschäftliche Schätzung. Er stellt kein garantiertes Einkommen, keine Anlagerendite, keine Trading-Performance, keine Finanzberatung und keine regulierte Finanzdienstleistung dar. Tatsächliche Ergebnisse hängen von der Umsetzung durch den Partner, der Nutzeraktivität, der Qualität der Community und der operativen Leistung ab.",
         start: "Start",
         stepLabel: "Schritt",
@@ -1091,6 +1190,17 @@
       document.getElementById("superPotential").textContent = money(superPotential);
       document.getElementById("superMonthly").textContent = money(superMonthly);
       document.getElementById("superDaily").textContent = moneyPerDay(superDaily);
+
+      const goodEffective = total > 0 ? (goodPotential / total) * 100 : 0;
+      const superEffective = total > 0 ? (superPotential / total) * 100 : 0;
+
+      document.getElementById("effGoodGroup").textContent = money(total);
+      document.getElementById("effGoodPotential").textContent = money(goodPotential);
+      document.getElementById("effGoodPercent").textContent = Math.round(goodEffective) + "%";
+
+      document.getElementById("effSuperGroup").textContent = money(total);
+      document.getElementById("effSuperPotential").textContent = money(superPotential);
+      document.getElementById("effSuperPercent").textContent = Math.round(superEffective) + "%";
     }
 
     document.querySelectorAll("#volumeButtons .preset").forEach(button => {
@@ -1109,63 +1219,9 @@
       goToStep(0);
     }
 
-    function buildSummary() {
-      const monthly = Number(state.monthlyVolume) || 0;
-      const total = monthly * state.buildMonths;
-      const days = state.periodMonths * 30;
-
-      const goodTurnover = total * state.goodMultiplier;
-      const goodPotential = goodTurnover * state.partnerAllocation;
-      const goodMonthly = goodPotential / state.periodMonths;
-      const goodDaily = goodTurnover / days;
-
-      const superTurnover = total * state.superMultiplier;
-      const superPotential = superTurnover * state.partnerAllocation;
-      const superMonthly = superPotential / state.periodMonths;
-      const superDaily = superTurnover / days;
-
-      return [
-        "Partner Arena Potential Calculator",
-        "",
-        t("monthlyVolume") + ": " + money(monthly),
-        t("buildPeriod") + ": " + t("threeMonths"),
-        t("totalActiveGroup") + ": " + money(total),
-        "",
-        t("goodPartner") + ":",
-        t("sixMonthSessionVolume") + ": " + money(goodTurnover),
-        t("potentialDesc") + ": " + money(goodPotential),
-        t("averageMonthlyPotential") + ": " + money(goodMonthly),
-        t("dailySessionVolumeNeeded") + ": " + moneyPerDay(goodDaily),
-        "",
-        t("superPartner") + ":",
-        t("sixMonthSessionVolume") + ": " + money(superTurnover),
-        t("potentialDesc") + ": " + money(superPotential),
-        t("averageMonthlyPotential") + ": " + money(superMonthly),
-        t("dailySessionVolumeNeeded") + ": " + moneyPerDay(superDaily),
-        "",
-        t("arenaLogicText")
-      ].join("\n");
-    }
-
-    async function copySummary() {
-      const text = buildSummary();
-      try {
-        await navigator.clipboard.writeText(text);
-        showToast(t("resultCopied"));
-      } catch (error) {
-        showToast(t("copyFailed"));
-      }
-    }
-
-    function showToast(message) {
-      const toast = document.getElementById("toast");
-      toast.textContent = message;
-      toast.classList.add("show");
-      setTimeout(() => toast.classList.remove("show"), 1800);
-    }
-
     setLanguage(detectInitialLanguage());
     updateAll();
   </script>
 </body>
 </html>
+     
